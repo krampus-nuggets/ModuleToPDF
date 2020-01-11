@@ -1,0 +1,13 @@
+{
+  "name": "module-to-pdf",
+  "version": "1.0.0",
+  "description": "Microsoft Learn Module to PDF Converter",
+  "main": "ModuleToPDF.js",
+  "repository": "https://github.com/krampus-nuggets/ModuleToPDF.git",
+  "author": "krampus-nuggets <sp3cter.productions@wemakeart.co.za>",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^1.20.0",
+    "uuid": "^3.3.3"
+  }
+}
