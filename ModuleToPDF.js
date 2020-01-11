@@ -25,15 +25,15 @@ let generatePDF = async () => {
     // END
 
     // START - MS Learn config
-    let index = [];
-    console.log(`${ index.length() }`); // CHECK - Pagination FOR LOOP write to Array
+    //let index = [];
+    //console.log(`Index: ${ index.length }`); // CHECK - Pagination FOR LOOP write to Array
     let units = 9;
     // END
 
     // START - Pagination Handler
     for (let i = 0; i < units; i++) {
         await newTab.waitFor(10000);
-        index = index.concat(await pageEval(newTab));
+        proc = await pageEval(newTab);
         if (i != units - 1) {
             await newTab.click("a#next-unit-link");
         }
@@ -55,11 +55,13 @@ async function pageEval(newTab) {
             let footer = document.querySelector("#footer");
 
             // CHECK - Arrays and Variables of Element Selector
-            console.log(`${ vidElm.length() }`);
-            console.log(`${ headDiv.length() }`);
-            console.log(`${ needHelp.length() }`);
-            console.log(`${ mobileNav.length() }`);
-            console.log(`${ footer.length() }`);
+            /*
+            console.log(`vidElm: ${ vidElm.length }`);
+            console.log(`headDiv: ${ headDiv.length }`);
+            console.log(`needHelp: ${ needHelp.length }`);
+            console.log(`mobileNav: ${ mobileNav.length }`);
+            console.log(`footer: ${ footer.length }`);
+            */
 
             try {
                 // Remove Mobile Nav-Bar Container [Parent Container SELF]
