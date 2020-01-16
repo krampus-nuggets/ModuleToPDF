@@ -94,3 +94,5 @@ const pageEvaluation = async () => {
         removeElements();
     });
 }
+
+generatePDF();
