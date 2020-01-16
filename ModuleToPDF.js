@@ -27,7 +27,7 @@ let generatePDF = async () => {
     // START - MS Learn config
     //let index = [];
     //console.log(`Index: ${ index.length }`); // CHECK - Pagination FOR LOOP write to Array
-    let units = 9;
+    let units = 10;
     // END
 
     // START - Pagination Handler
