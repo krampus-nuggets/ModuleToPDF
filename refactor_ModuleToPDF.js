@@ -62,3 +62,6 @@ const generatePDF = async () => {
             footer = document.querySelector("#footer");
             // END
 
+            // START - Remove IDs
+            footer.parentNode.removeChild(footer);
+            // END
