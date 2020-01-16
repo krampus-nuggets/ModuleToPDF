@@ -86,8 +86,9 @@ async function pageEval(newTab) {
     // START - PDF config
     const pdfConfig = {
         path: `${ dir + filename + ".pdf" }`,
-        format: "A4",
-        printBackground: true,
+        height: "842px",
+        width: "785px",
+        printBackground: true,/*
         margin: {
             top: "38px",
             right: "38px",
