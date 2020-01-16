@@ -94,7 +94,7 @@ async function pageEval(newTab) {
             right: "38px",
             bottom: "38px",
             left: "38px"
-        }
+        }*/
     };
     // END
 
