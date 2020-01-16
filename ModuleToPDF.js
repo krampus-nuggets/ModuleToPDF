@@ -27,15 +27,15 @@ let generatePDF = async () => {
     // START - MS Learn config
     //let index = [];
     //console.log(`Index: ${ index.length }`); // CHECK - Pagination FOR LOOP write to Array
-    let units = 9;
+    let units = 10;
     // END
 
     // START - Pagination Handler
     for (let i = 0; i < units; i++) {
-        await newTab.waitFor(10000);
+        //await newTab.waitFor(10000);
         proc = await pageEval(newTab);
         if (i != units - 1) {
-            await newTab.click("a#next-unit-link");
+            await newTab.click("p > a.button");
         }
     }
     // END
@@ -49,41 +49,29 @@ async function pageEval(newTab) {
     await newTab.evaluate(() => {
         const removeElm = () => {
             let vidElm = document.querySelectorAll(".embeddedvideo");
-            let headDiv = document.querySelectorAll(".header-holder");
-            let needHelp = document.querySelectorAll(".feedback-section");
-            let mobileNav = document.querySelector("#mobile-nav");
+            const contentHead = document.querySelector(".content-header");
+            let navMain = document.querySelector(".nav-main");
+            let navBasic = document.querySelector(".nav-basic");
             let footer = document.querySelector("#footer");
 
-            // CHECK - Arrays and Variables of Element Selector
-            /*
-            console.log(`vidElm: ${ vidElm.length }`);
-            console.log(`headDiv: ${ headDiv.length }`);
-            console.log(`needHelp: ${ needHelp.length }`);
-            console.log(`mobileNav: ${ mobileNav.length }`);
-            console.log(`footer: ${ footer.length }`);
-            */
-
             try {
-                // Remove Mobile Nav-Bar Container [Parent Container SELF]
-                mobileNav.parentNode.removeChild(mobileNav);
-                
-                // Remove Footer Element [Parent Container SELF]
                 footer.parentNode.removeChild(footer);
+
+                navMain.parentNode.removeChild(navMain);
+
+                navBasic.parentNode.removeChild(navBasic);
+
+                contentHead.parentNode.removeChild(contentHead);
                 
-                // FOR LOOP - Remove Video Element [Parent Container]
+                // FOR LOOP
                 for (var i = 0; i < vidElm.length; i++) {
                     vidElm[i].parentNode.removeChild(vidElm[i]);
                 }
-
-                // FOR LOOP - Remove Header [Parent Container SELF]
-                for (var i = 0; i < headDiv; i++) {
-                    headDiv[i].parentNode.removeChild(headDiv[i]);
-                }
-
-                // FOR LOOP - Remove Need Help Section [Parent Container]
-                for (var i = 0; i < needHelp; i++) {
-                    needHelp[i].parentNode.removeChild(needHelp[i]);
-                }
+                /*
+                // FOR LOOP 
+                for (var i = 0; i < contentHead.length; i++) {
+                    contentHead[i].parentNode.removeChild(contentHead[i]);
+                }*/
             } catch(e) {
                 console.log(e);
             }
@@ -98,14 +86,15 @@ async function pageEval(newTab) {
     // START - PDF config
     const pdfConfig = {
         path: `${ dir + filename + ".pdf" }`,
-        format: "A4",
-        printBackground: true,
+        height: "842px",
+        width: "785px",
+        printBackground: true,/*
         margin: {
             top: "38px",
             right: "38px",
             bottom: "38px",
             left: "38px"
-        }
+        }*/
     };
     // END
 
