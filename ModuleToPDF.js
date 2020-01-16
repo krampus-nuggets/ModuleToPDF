@@ -35,7 +35,7 @@ let generatePDF = async () => {
         await newTab.waitFor(10000);
         proc = await pageEval(newTab);
         if (i != units - 1) {
-            await newTab.click("a#next-unit-link");
+            await newTab.click("p > a.button");
         }
     }
     // END
