@@ -58,3 +58,7 @@ const generatePDF = async () => {
             navBasic = document.querySelectorAll(".nav-basic");
             // END
 
+            // START - IDs
+            footer = document.querySelector("#footer");
+            // END
+
