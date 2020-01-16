@@ -50,3 +50,11 @@ const generatePDF = async () => {
     browser.close();
 }
 
+            // START - Classes
+            videoElements = document.querySelectorAll(".embeddedvideo");
+            contentHeader = document.querySelectorAll("content-header");
+            feedbackSection = document.querySelectorAll(".feedback-section");
+            navMain = document.querySelectorAll(".nav-main");
+            navBasic = document.querySelectorAll(".nav-basic");
+            // END
+
