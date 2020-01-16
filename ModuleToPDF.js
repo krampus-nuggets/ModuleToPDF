@@ -54,36 +54,24 @@ async function pageEval(newTab) {
             let navBasic = document.querySelector(".nav-basic");
             let footer = document.querySelector("#footer");
 
-            // CHECK - Arrays and Variables of Element Selector
-            /*
-            console.log(`vidElm: ${ vidElm.length }`);
-            console.log(`headDiv: ${ headDiv.length }`);
-            console.log(`needHelp: ${ needHelp.length }`);
-            console.log(`mobileNav: ${ mobileNav.length }`);
-            console.log(`footer: ${ footer.length }`);
-            */
-
             try {
-                // Remove Mobile Nav-Bar Container [Parent Container SELF]
-                mobileNav.parentNode.removeChild(mobileNav);
-                
-                // Remove Footer Element [Parent Container SELF]
                 footer.parentNode.removeChild(footer);
                 
-                // FOR LOOP - Remove Video Element [Parent Container]
+                navMain.parentNode.removeChild(navMain);
+
+                navBasic.parentNode.removeChild(navBasic);
+
+                contentHead.parentNode.removeChild(contentHead);
+                
+                // FOR LOOP
                 for (var i = 0; i < vidElm.length; i++) {
                     vidElm[i].parentNode.removeChild(vidElm[i]);
                 }
-
-                // FOR LOOP - Remove Header [Parent Container SELF]
-                for (var i = 0; i < headDiv; i++) {
-                    headDiv[i].parentNode.removeChild(headDiv[i]);
-                }
-
-                // FOR LOOP - Remove Need Help Section [Parent Container]
-                for (var i = 0; i < needHelp; i++) {
-                    needHelp[i].parentNode.removeChild(needHelp[i]);
-                }
+                /*
+                // FOR LOOP 
+                for (var i = 0; i < contentHead.length; i++) {
+                    contentHead[i].parentNode.removeChild(contentHead[i]);
+                }*/
             } catch(e) {
                 console.log(e);
             }
