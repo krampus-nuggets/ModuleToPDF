@@ -65,3 +65,26 @@ const generatePDF = async () => {
             // START - Remove IDs
             footer.parentNode.removeChild(footer);
             // END
+
+            // START - LOOP HELL
+            for (var i = 0; i < videoElements.length; i++) {
+                videoElements[i].parentNode.removeChild(videoElements[i]);
+            }
+
+            for (var i = 0; i < contentHeader.length; i++) {
+                contentHeader[i].parentNode.removeChild(contentHeader[i]);
+            }
+
+            for (var i = 0; i < feedbackSection.length; i++) {
+                feedbackSection[i].parentNode.removeChild(feedbackSection[i]);
+            }
+
+            for (var i = 0; i < navMain.length; i++) {
+                navMain[i].parentNode.removeChild(navMain[i]);
+            }
+
+            for (var i = 0; i < navBasic.length; i++) {
+                navBasic[i].parentNode.removeChild(navBasic[i]);
+            }
+            // END
+        }
