@@ -23,3 +23,13 @@ const pdfConfig = {
 }
 // END
 
+// START - removeElements [GLOBALS]
+let videoElements;
+let navBasic;
+let navMain;
+let contentHeader;
+let feedbackSection;
+let footer;
+//const continueButton = "p > a.button";
+// END
+
