@@ -33,3 +33,20 @@ let footer;
 //const continueButton = "p > a.button";
 // END
 
+const generatePDF = async () => {
+    browser = await puppeteer.launch({ headless: true });
+    page = await browser.newPage();
+    //await browser.setCookies(cookies);
+    await page.goto(URL);
+
+    for (var i = 0; i < units;) {
+        await pageEvaluation(page);
+        await page.pdf(pdfConfig);
+        if (i != units - 1) {
+            await Promise.all([page.click("a#next-unit-link"), await page.waitForNavigation()]);
+        }
+        i++;
+    }
+    browser.close();
+}
+
