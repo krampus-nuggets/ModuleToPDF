@@ -49,9 +49,9 @@ async function pageEval(newTab) {
     await newTab.evaluate(() => {
         const removeElm = () => {
             let vidElm = document.querySelectorAll(".embeddedvideo");
-            let headDiv = document.querySelectorAll(".header-holder");
-            let needHelp = document.querySelectorAll(".feedback-section");
-            let mobileNav = document.querySelector("#mobile-nav");
+            const contentHead = document.querySelector(".content-header");
+            let navMain = document.querySelector(".nav-main");
+            let navBasic = document.querySelector(".nav-basic");
             let footer = document.querySelector("#footer");
 
             // CHECK - Arrays and Variables of Element Selector
