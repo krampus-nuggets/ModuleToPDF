@@ -50,6 +50,7 @@ const generatePDF = async () => {
     browser.close();
 }
 
+        const removeElements = async () => {
             // START - Classes
             videoElements = document.querySelectorAll(".embeddedvideo");
             contentHeader = document.querySelectorAll("content-header");
@@ -88,3 +89,4 @@ const generatePDF = async () => {
             }
             // END
         }
+        removeElements();
