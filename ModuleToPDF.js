@@ -32,7 +32,7 @@ let generatePDF = async () => {
 
     // START - Pagination Handler
     for (let i = 0; i < units; i++) {
-        await newTab.waitFor(10000);
+        //await newTab.waitFor(10000);
         proc = await pageEval(newTab);
         if (i != units - 1) {
             await newTab.click("p > a.button");
