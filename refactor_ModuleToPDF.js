@@ -50,6 +50,8 @@ const generatePDF = async () => {
     browser.close();
 }
 
+const pageEvaluation = async () => {
+    await page.evaluate(() => {
         const removeElements = async () => {
             // START - Classes
             videoElements = document.querySelectorAll(".embeddedvideo");
@@ -90,3 +92,5 @@ const generatePDF = async () => {
             // END
         }
         removeElements();
+    });
+}
