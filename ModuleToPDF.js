@@ -56,7 +56,7 @@ async function pageEval(newTab) {
 
             try {
                 footer.parentNode.removeChild(footer);
-                
+
                 navMain.parentNode.removeChild(navMain);
 
                 navBasic.parentNode.removeChild(navBasic);
