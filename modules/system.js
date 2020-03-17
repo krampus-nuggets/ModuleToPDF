@@ -29,3 +29,5 @@ const clear = () => {
     process.stdout.write("\u001B[2J\u001B[0;0f");
 };
 // END [Terminal & Buffer Clear]
+
+module.exports = { checkSystem, clear };
