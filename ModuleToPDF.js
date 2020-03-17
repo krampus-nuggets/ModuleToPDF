@@ -87,8 +87,8 @@ function mergePDF() {
 };
 // END [PDF Merge]
 
-// START [Get Unit URLs]
-(getUnits = async () => {
+// START [Get Unit URLs] - MAIN FUNCTIONALITY
+const getUnits = async () => {
     var timeStart = performance.now();
 
     browser = await puppeteer.launch({ headless: true });
@@ -115,9 +115,15 @@ function mergePDF() {
 
     await browser.close();
 
+    // START [Merge PDFs]
+    console.log(consoleOutput("mergeHeaders", 0));
     mergePDF();
+    // END [Merge PDFs]
 
     var timeStop = performance.now();
     console.log("Run Duration = " + (timeStop - timeStart));
+};
+// END [Get Unit URLs] - MAIN FUNCTIONALITY
+
 })();
 // END [Get Unit URLs]
