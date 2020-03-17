@@ -37,11 +37,17 @@ const configGenerator = async () => {
     await page.waitFor(1);
     for (var i = 0; i < pageEvaluation.length; i++) {
         var x = i + 1;
-        let filename = `${ x }_module.pdf`;
+        let filename = `${ x }_unit.pdf`;
         let fileconfig = {
             path: `${ directory + filename }`,
             format: "A4",
-            printBackground: true
+            printBackground: true,
+            margin: {
+                top: "10px",
+                right: "0px",
+                bottom: "10px",
+                left: "0px"
+        }
         }
         configs.push(fileconfig);
     }
