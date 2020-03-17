@@ -1,107 +1,98 @@
 // START - Imports
 const puppeteer = require("puppeteer");
 const uuid = require("uuid");
+const cookies = require("C:/projects/krampus-nuggets/ModuleToPDF/cookies.json");
 // END
 
-/*
-------------------------------------
-TASKS |
-------
-1. Debug removeElm()
-    - parentNode -> returns null value
-    - Acquire noise profile of catch(e) value
-    - Also check Classes and IDs as specified format in pdfConfig
-2. Automate filename assignment
-    - variable = querySelect(<unit-heading>).innerText
-    - write value to variable -> assign as filename
-------------------------------------
-*/
+// START - GLOBALS
+const URL = "https://docs.microsoft.com/en-us/learn/modules/principles-cloud-computing/1-introduction";
+const units = 10;
+// END
 
-let generatePDF = async () => {
-    // START - Puppeteer config
-    const browser = await puppeteer.launch({ headless: true });
-    const newTab = await browser.newPage();
-    await newTab.goto(URL, { waitUntil: "networkidle0" });
-    // END
+// START - generatePDF [GLOBALS]
+var browser;
+var page;
+const dir = "C:/Users/brandon/Desktop/test/";
+let filename = `${ uuid.v1() }`;
 
-    // START - MS Learn config
-    //let index = [];
-    //console.log(`Index: ${ index.length }`); // CHECK - Pagination FOR LOOP write to Array
-    let units = 10;
-    // END
+const pdfConfig = {
+    path: `${ dir + filename + ".pdf" }`,
+    height: "842px",
+    width: "785px",
+    printBackground: true
+}
+// END
 
-    // START - Pagination Handler
-    for (let i = 0; i < units; i++) {
-        //await newTab.waitFor(10000);
-        proc = await pageEval(newTab);
+// START - removeElements [GLOBALS]
+let videoElements;
+let navBasic;
+let navMain;
+let contentHeader;
+let feedbackSection;
+let footer;
+//const continueButton = "p > a.button";
+// END
+
+const generatePDF = async () => {
+    browser = await puppeteer.launch({ headless: true });
+    page = await browser.newPage();
+    //await browser.setCookies(cookies);
+    await page.goto(URL);
+
+    for (var i = 0; i < units;) {
+        await pageEvaluation(page);
+        await page.pdf(pdfConfig);
         if (i != units - 1) {
-            await newTab.click("p > a.button");
+            await Promise.all([page.click("a#next-unit-link"), await page.waitForNavigation()]);
         }
+        i++;
     }
-    // END
-
-    // START - Complete process
     browser.close();
-    // END
-};
+}
 
-async function pageEval(newTab) {
-    await newTab.evaluate(() => {
-        const removeElm = () => {
-            let vidElm = document.querySelectorAll(".embeddedvideo");
-            const contentHead = document.querySelector(".content-header");
-            let navMain = document.querySelector(".nav-main");
-            let navBasic = document.querySelector(".nav-basic");
-            let footer = document.querySelector("#footer");
+const pageEvaluation = async () => {
+    await page.evaluate(() => {
+        const removeElements = async () => {
+            // START - Classes
+            videoElements = document.querySelectorAll(".embeddedvideo");
+            contentHeader = document.querySelectorAll("content-header");
+            feedbackSection = document.querySelectorAll(".feedback-section");
+            navMain = document.querySelectorAll(".nav-main");
+            navBasic = document.querySelectorAll(".nav-basic");
+            // END
 
-            try {
-                footer.parentNode.removeChild(footer);
+            // START - IDs
+            footer = document.querySelector("#footer");
+            // END
 
-                navMain.parentNode.removeChild(navMain);
+            // START - Remove IDs
+            footer.parentNode.removeChild(footer);
+            // END
 
-                navBasic.parentNode.removeChild(navBasic);
-
-                contentHead.parentNode.removeChild(contentHead);
-                
-                // FOR LOOP
-                for (var i = 0; i < vidElm.length; i++) {
-                    vidElm[i].parentNode.removeChild(vidElm[i]);
-                }
-                /*
-                // FOR LOOP 
-                for (var i = 0; i < contentHead.length; i++) {
-                    contentHead[i].parentNode.removeChild(contentHead[i]);
-                }*/
-            } catch(e) {
-                console.log(e);
+            // START - LOOP HELL
+            for (var i = 0; i < videoElements.length; i++) {
+                videoElements[i].parentNode.removeChild(videoElements[i]);
             }
+
+            for (var i = 0; i < contentHeader.length; i++) {
+                contentHeader[i].parentNode.removeChild(contentHeader[i]);
+            }
+
+            for (var i = 0; i < feedbackSection.length; i++) {
+                feedbackSection[i].parentNode.removeChild(feedbackSection[i]);
+            }
+
+            for (var i = 0; i < navMain.length; i++) {
+                navMain[i].parentNode.removeChild(navMain[i]);
+            }
+
+            for (var i = 0; i < navBasic.length; i++) {
+                navBasic[i].parentNode.removeChild(navBasic[i]);
+            }
+            // END
         }
-        removeElm();
+        removeElements();
     });
-    // START - Filename & Output Directory
-    let dir = "C:/Users/brandon/Desktop/test/";
-    let filename = `${ uuid.v1() }`;
-    // END
+}
 
-    // START - PDF config
-    const pdfConfig = {
-        path: `${ dir + filename + ".pdf" }`,
-        height: "842px",
-        width: "785px",
-        printBackground: true,/*
-        margin: {
-            top: "38px",
-            right: "38px",
-            bottom: "38px",
-            left: "38px"
-        }*/
-    };
-    // END
-
-    await newTab.emulateMedia("screen");
-    const PDF = await newTab.pdf(pdfConfig);
-    return PDF;
-};
-
-let URL = "https://docs.microsoft.com/en-us/learn/modules/principles-cloud-computing/1-introduction";
-generatePDF(URL);
+generatePDF();
