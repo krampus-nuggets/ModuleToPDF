@@ -1,3 +1,7 @@
+// START [Imports]
+const { clear } = require("./system");
+// END [Imports]
+
 // START [Console Output]
 const consoleOutput = (container, value) => {
     let header;
