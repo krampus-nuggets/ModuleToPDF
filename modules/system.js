@@ -24,3 +24,8 @@ const checkSystem = () => {
 }
 // END [OS Check]
 
+// START [Terminal & Buffer Clear]
+const clear = () => {
+    process.stdout.write("\u001B[2J\u001B[0;0f");
+};
+// END [Terminal & Buffer Clear]
