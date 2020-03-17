@@ -13,3 +13,18 @@ Author: @krampus-nuggets
 Description: Microsoft Learn - Module to PDF Converter
 \n
 `;
+
+const mergeHeaders = [
+`
+ =====================
+| STARTED: Merge PDFs |
+ =====================
+\n
+ `,
+`
+ =======================
+| COMPLETED: Merge PDFs |
+ =======================
+\n
+`
+];
