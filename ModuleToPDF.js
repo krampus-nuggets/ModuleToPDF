@@ -68,11 +68,11 @@ function mergePDF() {
     console.log("Merge Proc [STARTED]\n");
     // START [Synchronous Dir Read]
     fs.readdirSync(directory).forEach(file => {
-        var i = 0;
         fileArray.push(directory + file);
-        console.log(`${ i } => File pushed to array!`);
-        i++;
+        console.log(`${ fileArray[f] } => File pushed to array!`);
+        f++;
     });
+    f = 0;
     // END [Synchronous Dir Read]
 
     merge(fileArray, outputDirectory, function(err) {
