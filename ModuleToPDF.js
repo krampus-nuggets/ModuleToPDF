@@ -131,5 +131,37 @@ const modules = [
     "That's the only one for now ಠ_ಠ"
 ];
 
+(interfaceLogic = () => {
+    const initQ = [{
+        type: "list",
+        name: "initialQuestion",
+        message: "Would you like to convert a Microsoft Learn Module to a PDF?",
+        choices: ["Yes", "No"]
+    }];
+
+    const moduleQ = [{
+        type: "list",
+        name: "whichModule",
+        message: "Which module would you like to convert?",
+        choices: modules
+    }];
+
+    console.log(consoleOutput("mainHeader"));
+
+    inquirer.prompt(initQ).then(answer => {
+        if (answer.initialQuestion == "Yes") {
+            inquirer.prompt(moduleQ).then(answer => {
+                if (answer.whichModule == `${ modules[0] }`) {
+                    getUnits();
+                } else {
+                    console.log("Fight Me (ง •̀_•́)ง");
+                    interfaceLogic();
+                }
+            });
+        } else {
+            console.log("Congrats, you've just wasted time ¯\\_(⊙_ʖ⊙)_/¯");
+            process.exit(0);
+        }
+    });
 })();
-// END [Get Unit URLs]
+// END [User-Interface]
