@@ -17,7 +17,9 @@ Repository - https://github.com/krampus-nuggets/ModuleToPDF
 const puppeteer = require("puppeteer");
 const merge = require("easy-pdf-merge");
 const fs = require("fs");
+const inquirer = require("inquirer");
 const { performance } = require("perf_hooks");
+const { consoleOutput } = require("./modules/banners");
 // END [Imports]
 
 // START [Globals]
