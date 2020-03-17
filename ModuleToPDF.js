@@ -125,5 +125,11 @@ const getUnits = async () => {
 };
 // END [Get Unit URLs] - MAIN FUNCTIONALITY
 
+// START [User-Interface]
+const modules = [
+    "Create Serverless Logic with Azure Functions [Dev Associate Cert]",
+    "That's the only one for now ಠ_ಠ"
+];
+
 })();
 // END [Get Unit URLs]
