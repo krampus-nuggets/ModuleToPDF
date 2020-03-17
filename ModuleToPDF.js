@@ -29,6 +29,7 @@ let pageEvaluation, unitURLs, unitList, unitJSON, browser, page;
 let directory = __dirname + "/exports/";
 let configs = [];
 let fileArray = [];
+let f = 0;
 // END [Globals]
 
 // START [Config Generator]
