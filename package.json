@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "easy-pdf-merge": "^0.2.2",
+    "inquirer": "^7.1.0",
     "puppeteer": "^2.1.1",
     "uuid": "^7.0.2"
   }
