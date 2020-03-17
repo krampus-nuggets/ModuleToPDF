@@ -10,6 +10,7 @@ Repository - https://github.com/krampus-nuggets/ModuleToPDF
 1. Convert script to CLI
 2. Get the merged PDF's name during scrape [Module Name]
 3. Rollback Feature - Clear generated files from system if error encountered
+4. Add error-handling
 */
 
 // START [Imports]
