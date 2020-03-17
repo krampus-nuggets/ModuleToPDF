@@ -23,8 +23,8 @@ const { consoleOutput } = require("./modules/banners");
 // END [Imports]
 
 // START [Globals]
-const moduleURL = "https://docs.microsoft.com/en-gb/learn/modules/create-serverless-logic-with-azure-functions/1-introduction";
-const outputDirectory = __dirname + "/merged/create-serverless-logic-with-azure-functions.pdf";
+const moduleURL = "https://docs.microsoft.com/en-gb/learn/modules/create-serverless-logic-with-azure-functions/1-introduction"; // Remove Static - Module URL
+const outputFile = __dirname + "/merged/create-serverless-logic-with-azure-functions.pdf"; // Remove Static - File Name
 let pageEvaluation, unitURLs, unitList, unitJSON, browser, page;
 let directory = __dirname + "/exports/";
 let configs = [];
