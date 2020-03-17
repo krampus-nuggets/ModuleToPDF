@@ -75,11 +75,14 @@ function mergePDF() {
     f = 0;
     // END [Synchronous Dir Read]
 
-    merge(fileArray, outputDirectory, function(err) {
+    merge(fileArray, outputFile, function(err) {
         if(err) {
             return console.log(err);
         }
-        return console.log(`Merged Here => ${ outputDirectory }`)
+
+        console.log(consoleOutput("mergeHeaders", 1));
+        console.log(`Merged Here => ${ outputFile }`);
+        process.exit(0);
     });
 };
 // END [PDF Merge]
