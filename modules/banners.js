@@ -1,3 +1,20 @@
+// START [Console Output]
+const consoleOutput = (container, value) => {
+    let header;
+
+    if (container == "mainHeader") {
+        clear();
+        header = mainHeader;
+    }
+    else if (container == "mergeHeaders") {
+        clear();
+        header = mergeHeaders[value];
+    }
+
+    return header;
+}
+// END [Console Output]
+
 const mainHeader = `
 
 / $$      /$$                 /$$           /$$                /$$$$$$$$                /$$$$$$$  /$$$$$$$  /$$$$$$$$
