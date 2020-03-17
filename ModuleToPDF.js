@@ -47,7 +47,7 @@ const configGenerator = async () => {
                 right: "0px",
                 bottom: "10px",
                 left: "0px"
-        }
+            }
         }
         configs.push(fileconfig);
     }
