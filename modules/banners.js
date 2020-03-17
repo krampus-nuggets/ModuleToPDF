@@ -49,3 +49,5 @@ const mergeHeaders = [
 \n
 `
 ];
+
+module.exports = { mainHeader, mergeHeaders, consoleOutput }
