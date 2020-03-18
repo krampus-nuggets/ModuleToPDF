@@ -12,7 +12,7 @@ const units = 10;
 // START - generatePDF [GLOBALS]
 var browser;
 var page;
-const dir = "C:/Users/brandon/Desktop/test/";
+const dir = "<dir>";
 let filename = `${ uuid.v1() }`;
 
 const pdfConfig = {
