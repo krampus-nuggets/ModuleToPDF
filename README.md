@@ -28,4 +28,4 @@ A project originally created to help me study Microsoft Learn modules whilst off
 
 ---
 
-**RIP** if you're viewing this on a mobile device😂
+"Them man are soft just like ice cream" - **Skepta**
